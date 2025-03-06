@@ -7,7 +7,7 @@ namespace _2025_second_assignment_2_23
     internal class Program
     {   
         //求素数，第一题
-        List<int> solution(int number)
+        List<int> GetPrimeFactor(int number)
         {
             List<int> result=new List<int>();
             for(int i=2;i*i<number;i++)
@@ -28,19 +28,19 @@ namespace _2025_second_assignment_2_23
 
 
         //求数组的编程求一个整数数组的最大值、最小值、平均值和所有数组元素的和
-        List<int> GetMaxMinnumber(List<int> InputLlist)
+        List<double> GetMaxMinNumber(List<double> InputLlist)
         {
-            List<int> result=new List<int>();
-            int MaxOne = InputLlist.Max();
-            int MinOne=InputLlist.Min();
-            int number = 0;
+            List<double> result=new List<double>();
+            double MaxOne = InputLlist.Max();
+            double MinOne=InputLlist.Min();
+            double number = 0;
             for(int i = 0; i < InputLlist.Count; i++)
             {
                 number += InputLlist[i];
             }
             result.Add(MaxOne);
             result.Add(MinOne);
-            result.Add(number/(InputLlist.Count-1));
+            result.Add(number/InputLlist.Count);
             result.Add(number); 
             return result;  
         }
@@ -94,10 +94,11 @@ namespace _2025_second_assignment_2_23
 
 
         static void Main(string[] args)
-        {  Program program = new Program(); 
-            int number = 65;
+        {  Program program = new Program();
+            Console.Write("请输入一个数字求它的素数因子：");
+         int number=int.Parse( Console.ReadLine());
          //第一个函数调用
-            List<int>list=  program.solution(number);
+            List<int>list=  program.GetPrimeFactor(number);
             Console.WriteLine("第一个函数运行结果：");
             for(int i = 0; i < list.Count; i++)
             {
@@ -111,8 +112,12 @@ namespace _2025_second_assignment_2_23
 
 
             //第二个函数调用
-            List<int> list3 =new List<int> { 1, 2, 3, 4, 5 };
-            List<int> list2 = program.GetMaxMinnumber(list3);
+            List<double> list3 =new List<double> ();
+            Console.Write("请输入一系列数以求最大值，最小值，平均值和和：");
+            string []str = Console.ReadLine().Split(' ');
+            for(int i=0;i< str.Length; i++)
+                list3.Add(double.Parse(str[i]));    
+            List<double> list2 = program.GetMaxMinNumber(list3);
             Console.WriteLine("第二个函数运行结果：");
             Console.WriteLine("分别是最大值，最小值，平均值，和");
             for (int i = 0; i < list2.Count; i++)
@@ -128,8 +133,10 @@ namespace _2025_second_assignment_2_23
 
 
             //第三个函数调用
+            Console.Write("请输入一个数字要求不超过这个数字内的所有素数：");
+            int number3=int.Parse( Console.ReadLine());
             Console.WriteLine("第三个函数运行结果：");
-            program.GetNeedNumber(200);
+            program.GetNeedNumber(number3);
             Console.WriteLine("\n");
 
            // 第四个函数调用
